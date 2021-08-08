@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
-
-import Layout from './components/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Pages/Home/Home";
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <div>
-        
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }

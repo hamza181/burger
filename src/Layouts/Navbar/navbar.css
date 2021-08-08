@@ -1,0 +1,38 @@
+.nav{
+    margin-left: 10%;
+}
+
+.list{
+    margin: 0 8%;
+}
+
+.mainDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navDiv{
+    display: flex;
+}
+
+.buttonDiv{
+    
+}
+
+.Button{
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    height: 35px;
+    width: 116px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.Button:hover{
+    background-color: #fff;
+    color: #000;
+}
