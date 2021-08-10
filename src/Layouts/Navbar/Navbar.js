@@ -9,7 +9,7 @@ function navbar() {
         <Container>
           <Navbar.Brand href="/">Burger</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="nav">
+          <Navbar.Collapse id="responsive-navbar-nav" className='nav'>
             <Nav className="me-auto mainDiv">
             {/* <div className='mainDiv'> */}
 

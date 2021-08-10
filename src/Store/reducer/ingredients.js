@@ -9,17 +9,21 @@ const initialState = {
 export const ingredients = (state = initialState, action) => {
   switch (action.type) {
     case constant.ADD_INGREDIENT:
+      // console.log(action.ing);
       return {
         ...state,
-        bacon: state.bacon + 1,
+        // if we put variable in Object we use [variableNname] this syntax
+        // this is called object literals
+        // bacon: state.bacon + 1  // same as below
+        [action.ing]: state[action.ing] + 1,
       };
-
+    case constant.REMOVE_INGREDIENT:
+      // console.log(action.ing);
+      return {
+        ...state,
+        [action.ing]: state[action.ing] - 1,
+      };
     default:
       return state;
   }
-  // if(){
-
-  // }
-
-  // return state
 };

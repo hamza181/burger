@@ -1,13 +1,15 @@
 import * as constant from "../constant/burger";
 
-export function addIngredient() {
+export function addIngredient(addType) {
   return {
     type: constant.ADD_INGREDIENT,
+    ing: addType
   };
 }
 
-export function removeIngredient() {
+export function removeIngredient(removeType) {
     return {
       type: constant.REMOVE_INGREDIENT,
+      ing: removeType
     };
   }
