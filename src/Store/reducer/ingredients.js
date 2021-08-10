@@ -1,27 +1,42 @@
 import * as constant from "../constant/burger";
 
+const totalPrice = {
+  bacon: 5,
+  salad: 10,
+  cheese: 15,
+};
+
 const initialState = {
-  bacon: 1,
-  salad: 1,
-  cheese: 1,
+  ingredients: {
+    bacon: 0,
+    salad: 0,
+    cheese: 0,
+  },
+  totalPrice: 0,
 };
 
 export const ingredients = (state = initialState, action) => {
   switch (action.type) {
     case constant.ADD_INGREDIENT:
-      // console.log(action.ing);
       return {
         ...state,
         // if we put variable in Object we use [variableNname] this syntax
         // this is called object literals
-        // bacon: state.bacon + 1  // same as below
-        [action.ing]: state[action.ing] + 1,
+        ingredients: {
+          ...state.ingredients,
+          // bacon: state.ingredient.bacon + 1  // same as below
+          [action.ing]: state.ingredients[action.ing] + 1,
+        },
+        totalPrice: state.totalPrice + totalPrice[action.ing],
       };
     case constant.REMOVE_INGREDIENT:
-      // console.log(action.ing);
       return {
         ...state,
-        [action.ing]: state[action.ing] - 1,
+        ingredients: {
+          ...state.ingredients,
+          [action.ing]: state.ingredients[action.ing] - 1,
+        },
+        totalPrice: state.totalPrice - totalPrice[action.ing],
       };
     default:
       return state;

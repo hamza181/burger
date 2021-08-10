@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import React, { useRef } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ingredients from "../../Components/Ingredients";
 import Navbar from "../../Layouts/Navbar/Navbar";
@@ -7,16 +7,12 @@ import { addIngredient, removeIngredient } from "../../Store/action/burger";
 import "./home.css";
 
 function Home() {
-  var myState = useSelector((state) => state.ingredients);
+  var ingredients = useSelector((state) => state.ingredients.ingredients);
+  var totalPrice = useSelector((state) => state.ingredients.totalPrice);
   const dispatch = useDispatch();
-  // console.log(myState);
-
-  const refBacon = useRef(null);
-  const refSalad = useRef(null);
-  const refCheese = useRef(null);
 
   // convert object keys in array
-  const ingredientKeyArray = Object.keys(myState);
+  const ingredientKeyArray = Object.keys(ingredients);
   // console.log(ingredientKeyArray);
 
   // how to make array with null values
@@ -28,7 +24,7 @@ function Home() {
   const tranformedIngredients = ingredientKeyArray
     .map((value, index) => {
       return (
-        [...Array(myState[value])]
+        [...Array(ingredients[value])]
           // now fill empty array with ingredient component
           .map((_, index) => {
             return <Ingredients key={value + index} type={value}></Ingredients>;
@@ -47,23 +43,13 @@ function Home() {
   console.log(tranformedIngredients);
 
   function addIng(props) {
-    // var addType = "bacon";
-    var addType = props.current.id;
-    console.log(addType);
-    // console.log(props);
-
+    var addType = props;
     dispatch(addIngredient(addType));
-    // console.log(myState.bacon);
   }
 
   function removeIng(props) {
-    // var addType = "bacon";
-    var removeType = props.current.id;
-    console.log(removeType);
-    // console.log(props);
-
+    var removeType = props;
     dispatch(removeIngredient(removeType));
-    // console.log(myState.bacon);
   }
 
   return (
@@ -86,25 +72,23 @@ function Home() {
         <div className="buttons">
           <h4>Add or Remove Ingredients</h4>
           <div className="baconButton">
-            <Button type="primary" onClick={()=>{removeIng(refBacon)}}>Less</Button>
+            <Button onClick={() => removeIng("bacon")}>Less</Button>
             <p>Bacon</p>
-            <Button ref={refBacon} id="bacon" onClick={()=>{addIng(refBacon)}}>
-              More
-            </Button>
+
+            <Button onClick={() => addIng("bacon")}>More</Button>
           </div>
           <div className="saladButton">
-            <Button type="primary">Less</Button>
+            <Button onClick={() => removeIng("salad")}>Less</Button>
             <p>Salad</p>
-            <Button ref={refSalad} id="salad" onClick={()=>{addIng(refSalad)}}>
-              More
-            </Button>
+            <Button onClick={() => addIng("salad")}>More</Button>
           </div>
           <div className="cheeseButton">
-            <Button type="primary">Less</Button>
+            <Button onClick={() => removeIng("cheese")}>Less</Button>
             <p>Cheese</p>
-            <Button ref={refCheese} id="cheese" onClick={()=>{addIng(refCheese)}}>
-              More
-            </Button>
+            <Button onClick={() => addIng("cheese")}>More</Button>
+          </div>
+          <div>
+            <p>Total Price: {totalPrice}</p>
           </div>
         </div>
       </div>
