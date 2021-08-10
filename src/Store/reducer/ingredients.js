@@ -30,14 +30,16 @@ export const ingredients = (state = initialState, action) => {
         totalPrice: state.totalPrice + totalPrice[action.ing],
       };
     case constant.REMOVE_INGREDIENT:
-      return {
-        ...state,
-        ingredients: {
-          ...state.ingredients,
-          [action.ing]: state.ingredients[action.ing] - 1,
-        },
-        totalPrice: state.totalPrice - totalPrice[action.ing],
-      };
+      if (state.ingredients[action.ing] > 0) {
+        return {
+          ...state,
+          ingredients: {
+            ...state.ingredients,
+            [action.ing]: state.ingredients[action.ing] - 1,
+          },
+          totalPrice: state.totalPrice - totalPrice[action.ing],
+        };
+      }
     default:
       return state;
   }

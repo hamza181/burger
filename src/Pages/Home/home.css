@@ -79,3 +79,7 @@
     color:#ff851be6;
     background: white;
 }
+
+.buttons button:disabled{
+    cursor: no-drop;
+}

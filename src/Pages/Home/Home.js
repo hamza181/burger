@@ -52,6 +52,20 @@ function Home() {
     dispatch(removeIngredient(removeType));
   }
 
+  // disabling less button
+  var disable = { ...ingredients };
+  for (let key in disable) {
+    // if (disable[key] == 0) {
+    //   disable[key] = true
+    // }
+    // else{
+    //   disable[key] = false
+    // }
+    // same as above if else 
+    disable[key] = disable[key] <= 0;
+  }
+
+  console.log(disable);
   return (
     <div>
       <Navbar></Navbar>
@@ -72,7 +86,9 @@ function Home() {
         <div className="buttons">
           <h4>Add or Remove Ingredients</h4>
           <div className="baconButton">
-            <Button onClick={() => removeIng("bacon")}>Less</Button>
+            <Button disabled={disable.bacon} onClick={() => removeIng("bacon")}>
+              Less
+            </Button>
             <p>Bacon</p>
 
             <Button onClick={() => addIng("bacon")}>More</Button>
