@@ -94,12 +94,12 @@ function Home() {
             <Button onClick={() => addIng("bacon")}>More</Button>
           </div>
           <div className="saladButton">
-            <Button onClick={() => removeIng("salad")}>Less</Button>
+            <Button disabled={disable.salad} onClick={() => removeIng("salad")}>Less</Button>
             <p>Salad</p>
             <Button onClick={() => addIng("salad")}>More</Button>
           </div>
           <div className="cheeseButton">
-            <Button onClick={() => removeIng("cheese")}>Less</Button>
+            <Button disabled={disable.cheese} onClick={() => removeIng("cheese")}>Less</Button>
             <p>Cheese</p>
             <Button onClick={() => addIng("cheese")}>More</Button>
           </div>
