@@ -1,0 +1,9 @@
+.list{
+    text-transform: capitalize;
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.list li{
+    font-size: 18px;
+}

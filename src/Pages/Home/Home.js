@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import MyModal from "../../Components/UI/Modal/MyModal";
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ingredients from "../../Components/Ingredients";
@@ -9,12 +10,14 @@ import {
   updatePurchasable,
 } from "../../Store/action/burger";
 import "./home.css";
+import OrderSummary from "../../Components/OrderSummary/OrderSummary";
 
 function Home() {
   var ingredients = useSelector((state) => state.ingredients.ingredients);
   var totalPrice = useSelector((state) => state.ingredients.totalPrice);
   var purchasable = useSelector((state) => state.ingredients.purchasable);
   const dispatch = useDispatch();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // convert object keys in array
   const ingredientKeyArray = Object.keys(ingredients);
@@ -105,6 +108,9 @@ function Home() {
     disable[key] = disable[key] <= 0;
   }
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
   return (
     <div>
       <Navbar></Navbar>
@@ -122,6 +128,12 @@ function Home() {
         </div>
       </div>
 
+      <MyModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      >
+        <OrderSummary></OrderSummary>
+      </MyModal>
       <div className="buttonMain">
         <div className="buttons">
           <h4>Add or Remove Ingredients</h4>
@@ -152,7 +164,9 @@ function Home() {
           </div>
           <p>Total Price: {totalPrice}</p>
 
-          <button disabled={!purchasable}>Order</button>
+          <button disabled={!purchasable} onClick={showModal}>
+            Order
+          </button>
         </div>
       </div>
     </div>
