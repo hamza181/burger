@@ -1,19 +1,23 @@
 import { Button } from "antd";
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Ingredients from "../../Components/Ingredients";
 import Navbar from "../../Layouts/Navbar/Navbar";
-import { addIngredient, removeIngredient } from "../../Store/action/burger";
+import {
+  addIngredient,
+  removeIngredient,
+  updatePurchasable,
+} from "../../Store/action/burger";
 import "./home.css";
 
 function Home() {
   var ingredients = useSelector((state) => state.ingredients.ingredients);
   var totalPrice = useSelector((state) => state.ingredients.totalPrice);
+  var purchasable = useSelector((state) => state.ingredients.purchasable);
   const dispatch = useDispatch();
 
   // convert object keys in array
   const ingredientKeyArray = Object.keys(ingredients);
-  // console.log(ingredientKeyArray);
 
   // how to make array with null values
   // this arr make an array with 3 null value
@@ -21,7 +25,8 @@ function Home() {
   // console.log(arr);
 
   // apply map on object keys aur har object key k lye us ki value jitne empty arrays banae
-  const tranformedIngredients = ingredientKeyArray
+
+  var tranformedIngredients = ingredientKeyArray
     .map((value, index) => {
       return (
         [...Array(ingredients[value])]
@@ -40,7 +45,13 @@ function Home() {
       // initial value
       []
     );
-  console.log(tranformedIngredients);
+
+  if (tranformedIngredients.length === 0) {
+    tranformedIngredients = <p>Please add ingredients</p>;
+    dispatch(updatePurchasable(false));
+  } else {
+    dispatch(updatePurchasable(true));
+  }
 
   function addIng(props) {
     var addType = props;
@@ -52,6 +63,35 @@ function Home() {
     dispatch(removeIngredient(removeType));
   }
 
+  // useEffect(() => {
+  //   updateMyPurchasable();
+  // }, [ingredients]);
+
+  // function updateMyPurchasable() {
+  //   let arr = Object.keys(ingredients);
+  //   let total = 0;
+  //   for (let key of arr) {
+  //     total = total + ingredients[key];
+  //   }
+  // if (total > 0) {
+  //   dispatch(updatePurchasable(true));
+  // } else {
+  //   dispatch(updatePurchasable(false));
+  // }
+  // }
+
+  // function updateMyPurchasable() {
+  //   let arr = Object.values(ingredients);
+  //   let total = arr.reduce((acc, ele, ind) => {
+  //     return acc + ele;
+  //   }, 0);
+  //   if (total > 0) {
+  //     dispatch(updatePurchasable(true));
+  //   } else {
+  //     dispatch(updatePurchasable(false));
+  //   }
+  // }
+
   // disabling less button
   var disable = { ...ingredients };
   for (let key in disable) {
@@ -61,11 +101,10 @@ function Home() {
     // else{
     //   disable[key] = false
     // }
-    // same as above if else 
+    // same as above if else
     disable[key] = disable[key] <= 0;
   }
 
-  console.log(disable);
   return (
     <div>
       <Navbar></Navbar>
@@ -78,6 +117,7 @@ function Home() {
           <Ingredients type="cheese"></Ingredients> */}
 
           {tranformedIngredients}
+
           <div className="burgerBottom"></div>
         </div>
       </div>
@@ -94,18 +134,25 @@ function Home() {
             <Button onClick={() => addIng("bacon")}>More</Button>
           </div>
           <div className="saladButton">
-            <Button disabled={disable.salad} onClick={() => removeIng("salad")}>Less</Button>
+            <Button disabled={disable.salad} onClick={() => removeIng("salad")}>
+              Less
+            </Button>
             <p>Salad</p>
             <Button onClick={() => addIng("salad")}>More</Button>
           </div>
           <div className="cheeseButton">
-            <Button disabled={disable.cheese} onClick={() => removeIng("cheese")}>Less</Button>
+            <Button
+              disabled={disable.cheese}
+              onClick={() => removeIng("cheese")}
+            >
+              Less
+            </Button>
             <p>Cheese</p>
             <Button onClick={() => addIng("cheese")}>More</Button>
           </div>
-          <div>
-            <p>Total Price: {totalPrice}</p>
-          </div>
+          <p>Total Price: {totalPrice}</p>
+
+          <button disabled={!purchasable}>Order</button>
         </div>
       </div>
     </div>

@@ -80,6 +80,6 @@
     background: white;
 }
 
-.buttons button:disabled{
+button:disabled{
     cursor: no-drop;
 }

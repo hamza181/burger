@@ -13,6 +13,7 @@ const initialState = {
     cheese: 0,
   },
   totalPrice: 0,
+  purchasable: false,
 };
 
 export const ingredients = (state = initialState, action) => {
@@ -40,6 +41,11 @@ export const ingredients = (state = initialState, action) => {
           totalPrice: state.totalPrice - totalPrice[action.ing],
         };
       }
+    case constant.PURCHASABLE:
+      return {
+        ...state,
+        purchasable: action.payload,
+      };
     default:
       return state;
   }
