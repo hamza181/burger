@@ -14,7 +14,7 @@ function OrderSummary(props) {
       <h5>Your Order</h5>
       <ul className="list">{ingredientSummary}</ul>
       <h6>Total Price: {totalPrice}</h6>
-      <p>Continue to checkout ?</p>
+      
     </div>
   );
 }

@@ -78,8 +78,6 @@ function Home() {
 
   return (
     <div>
-      <Navbar></Navbar>
-
       <Burger></Burger>
       <MyModal
         isModalVisible={isModalVisible}

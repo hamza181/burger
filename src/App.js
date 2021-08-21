@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Pages/Home/Home";
 import "antd/dist/antd.css";
 import Checkout from "./Pages/Checkout/Checkout";
-
+import Layout from "./Layouts";
 class App extends Component {
   render() {
     return (
@@ -12,10 +12,14 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Layout>
+                <Home />
+              </Layout>
             </Route>
             <Route exact path="/checkout">
-              <Checkout />
+              <Layout>
+                <Checkout />
+              </Layout>
             </Route>
           </Switch>
         </Router>

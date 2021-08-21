@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 function navbar() {
   return (
@@ -9,24 +10,23 @@ function navbar() {
         <Container>
           <Navbar.Brand href="/">Burger</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className='nav'>
+          <Navbar.Collapse id="responsive-navbar-nav" className="nav">
             <Nav className="me-auto mainDiv">
-            <div className='mainDiv'>
-
-              <div className="navDiv">
-                <Nav.Link href="#features" className="list">
-                  Burger
-                </Nav.Link>
-                <Nav.Link href="#pricing" className="list">
-                  Checkout
-                </Nav.Link>
+              <div className="mainDiv">
+                <div className="navDiv">
+                  <Nav.Link className="list">
+                    <Link to="/">Burger</Link>
+                  </Nav.Link>
+                  <Nav.Link className="list">
+                    <Link to="/checkout">Checkout</Link>
+                  </Nav.Link>
+                </div>
+                <div className="buttonDiv">
+                  <Nav.Link href="#pricing" className="list">
+                    <button className="Button">Login</button>
+                  </Nav.Link>
+                </div>
               </div>
-              <div className="buttonDiv">
-                <Nav.Link href="#pricing" className="list">
-                  <button className="Button">Login</button>
-                </Nav.Link>
-              </div>
-            </div>
             </Nav>
             {/* <Nav className='me-auto'>
               <Nav.Link href="#deets">More deets</Nav.Link>
