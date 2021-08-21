@@ -3,6 +3,7 @@ import { Modal, Button } from "antd";
 
 function MyModal(props) {
   //   const [props.isModalVisible, props.setIsModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false)
 
 //   const showModal = () => {
 //     props.setIsModalVisible(true);
@@ -25,6 +26,13 @@ function MyModal(props) {
         visible={props.isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        footer={[
+            <Button key="back" onClick={handleCancel}>
+              Cancel
+            </Button>,
+            <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+              Continue
+            </Button>,]}
       >
         {props.children}
       </Modal>

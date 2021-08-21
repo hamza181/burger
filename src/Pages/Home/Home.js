@@ -11,6 +11,7 @@ import {
 } from "../../Store/action/burger";
 import "./home.css";
 import OrderSummary from "../../Components/OrderSummary/OrderSummary";
+import Burger from "../../Components/Burger/Burger";
 
 function Home() {
   var ingredients = useSelector((state) => state.ingredients.ingredients);
@@ -18,43 +19,6 @@ function Home() {
   var purchasable = useSelector((state) => state.ingredients.purchasable);
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // convert object keys in array
-  const ingredientKeyArray = Object.keys(ingredients);
-
-  // how to make array with null values
-  // this arr make an array with 3 null value
-  // let arr = [...Array(3)];
-  // console.log(arr);
-
-  // apply map on object keys aur har object key k lye us ki value jitne empty arrays banae
-
-  var tranformedIngredients = ingredientKeyArray
-    .map((value, index) => {
-      return (
-        [...Array(ingredients[value])]
-          // now fill empty array with ingredient component
-          .map((_, index) => {
-            return <Ingredients key={value + index} type={value}></Ingredients>;
-          })
-      );
-    })
-    // if all values of ingredient is 0 then reduce array to []
-    // argument1 = previous value, argument2 = current value
-    .reduce(
-      (arr, el) => {
-        return arr.concat(el);
-      },
-      // initial value
-      []
-    );
-
-  if (tranformedIngredients.length === 0) {
-    tranformedIngredients = <p>Please add ingredients</p>;
-    dispatch(updatePurchasable(false));
-  } else {
-    dispatch(updatePurchasable(true));
-  }
 
   function addIng(props) {
     var addType = props;
@@ -66,9 +30,9 @@ function Home() {
     dispatch(removeIngredient(removeType));
   }
 
-  // useEffect(() => {
-  //   updateMyPurchasable();
-  // }, [ingredients]);
+  useEffect(() => {
+    updateMyPurchasable();
+  }, [ingredients]);
 
   // function updateMyPurchasable() {
   //   let arr = Object.keys(ingredients);
@@ -83,17 +47,17 @@ function Home() {
   // }
   // }
 
-  // function updateMyPurchasable() {
-  //   let arr = Object.values(ingredients);
-  //   let total = arr.reduce((acc, ele, ind) => {
-  //     return acc + ele;
-  //   }, 0);
-  //   if (total > 0) {
-  //     dispatch(updatePurchasable(true));
-  //   } else {
-  //     dispatch(updatePurchasable(false));
-  //   }
-  // }
+  function updateMyPurchasable() {
+    let arr = Object.values(ingredients);
+    let total = arr.reduce((acc, ele, ind) => {
+      return acc + ele;
+    }, 0);
+    if (total > 0) {
+      dispatch(updatePurchasable(true));
+    } else {
+      dispatch(updatePurchasable(false));
+    }
+  }
 
   // disabling less button
   var disable = { ...ingredients };
@@ -111,23 +75,12 @@ function Home() {
   const showModal = () => {
     setIsModalVisible(true);
   };
+
   return (
     <div>
       <Navbar></Navbar>
-      <div className="burgerMain">
-        <div className="burger">
-          <div className="burgerTop"></div>
 
-          {/* <Ingredients type="bacon"></Ingredients>
-          <Ingredients type="salad"></Ingredients>
-          <Ingredients type="cheese"></Ingredients> */}
-
-          {tranformedIngredients}
-
-          <div className="burgerBottom"></div>
-        </div>
-      </div>
-
+      <Burger></Burger>
       <MyModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}

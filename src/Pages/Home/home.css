@@ -1,33 +1,33 @@
-.burgerMain{
-    display: flex;
-    justify-content: center;
-    /* background: yellow; */
-}
+    .burgerMain{
+        display: flex;
+        justify-content: center;
+        /* background: yellow; */
+    }
 
-.burger{
-    width: 380px;
-    /* background: red; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
-}
+    .burger{
+        width: 380px;
+        /* background: red; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
 
-.burgerTop{
-    height: 70px;
-    width: 90%;
-    background: #f1b866;
-    margin: 6px 0;
-    border-radius: 50% 50% 14% 14% / 100% 100% 0% 0% ;
-}
+    .burgerTop{
+        height: 70px;
+        width: 90%;
+        background: #f1b866;
+        margin: 6px 0;
+        border-radius: 50% 50% 14% 14% / 100% 100% 0% 0% ;
+    }
 
-.burgerBottom{
-    height: 40px;
-    width: 90%;
-    margin: 6px 0;
-    border-radius: 3px;
-    background: #f1b866;
-}
+    .burgerBottom{
+        height: 40px;
+        width: 90%;
+        margin: 6px 0;
+        border-radius: 3px;
+        background: #f1b866;
+    }
 
 .buttonMain{
     display: flex;
@@ -79,6 +79,7 @@
     color:#ff851be6;
     background: white;
 }
+
 
 button:disabled{
     cursor: no-drop;

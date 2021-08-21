@@ -11,14 +11,14 @@ function navbar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className='nav'>
             <Nav className="me-auto mainDiv">
-            {/* <div className='mainDiv'> */}
+            <div className='mainDiv'>
 
               <div className="navDiv">
                 <Nav.Link href="#features" className="list">
-                  Features
+                  Burger
                 </Nav.Link>
                 <Nav.Link href="#pricing" className="list">
-                  Pricing
+                  Checkout
                 </Nav.Link>
               </div>
               <div className="buttonDiv">
@@ -26,7 +26,7 @@ function navbar() {
                   <button className="Button">Login</button>
                 </Nav.Link>
               </div>
-            {/* </div> */}
+            </div>
             </Nav>
             {/* <Nav className='me-auto'>
               <Nav.Link href="#deets">More deets</Nav.Link>
