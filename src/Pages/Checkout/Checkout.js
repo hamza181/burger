@@ -7,6 +7,8 @@ import Navbar from "../../Layouts/Navbar/Navbar";
 import "./Checkout.css";
 import instance from "../../axios-orders";
 import { useHistory } from "react-router-dom";
+import Message from "../../Components/Message.js/Message";
+import { message } from "antd";
 
 function Checkout() {
   const history = useHistory();
@@ -23,6 +25,7 @@ function Checkout() {
       .post("/orders.json", data)
       .then((response) =>{
         history.push("/");
+        message.success('Order successful');
         console.log(response.data);
   })}
   return (
