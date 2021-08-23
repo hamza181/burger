@@ -5,8 +5,8 @@ import Signup from '../../Components/Auth/Signup/Signup'
 function Auth() {
     return (
         <div>
-            <Login></Login>
-            {/* <Signup></Signup> */}
+            {/* <Login></Login> */}
+            <Signup></Signup>
         </div>
     )
 }

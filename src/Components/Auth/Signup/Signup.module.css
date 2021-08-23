@@ -1,0 +1,80 @@
+.main {
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .login {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* text-align: center; */
+    width: 40%;
+    min-height: 80vh;
+    height: 500px;
+    /* background: rgb(29, 158, 109); */
+    border-radius: 15px;
+    box-shadow: rgb(38 57 77) 0px 25px 67px -14px;
+  }
+  
+  .loginHeader {
+  
+    height: 100px;
+    width: 100%;
+    background: #58b747;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px 15px 0px 0px;
+  }
+  
+  .loginHeader h2, h3{
+    color: #fbfff8;
+  }
+  
+  .inputDiv{
+  /* background-color: red; */
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 50px 0;
+  }
+  
+  .inputDiv input{
+      margin: 10px 0;
+      background: #ebebeb;
+      border-radius: 27px;
+      border: none;
+      height: 42px;
+      padding: 0 20px;
+  }
+  
+  .inputDiv input:focus{
+    outline: none ;
+  }
+  
+  .inputDiv button{
+      color: #fbfff8;
+      background-color: #58b747;
+      border: none;
+      border-radius: 27px;
+      height: 42px;
+      margin: 30px 0;
+  }
+  
+  .inputDiv p{
+    align-self: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .link{
+    color: #58b747;
+    font-size: 20px;
+  }
+  
+  

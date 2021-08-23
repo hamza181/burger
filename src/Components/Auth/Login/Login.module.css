@@ -14,7 +14,7 @@
   width: 40%;
   min-height: 80vh;
   height: 500px;
-  background: rgb(29, 158, 109);
+  /* background: rgb(29, 158, 109); */
   border-radius: 15px;
   box-shadow: rgb(38 57 77) 0px 25px 67px -14px;
 }
@@ -41,7 +41,7 @@ align-self: center;
 flex-direction: column;
 justify-content: center;
 width: 90%;
-margin: 20px 0;
+margin: 50px 0;
 }
 
 .inputDiv input{
@@ -50,6 +50,11 @@ margin: 20px 0;
     border-radius: 27px;
     border: none;
     height: 42px;
+    padding: 0 20px;
+}
+
+.inputDiv input:focus{
+  outline: none ;
 }
 
 .inputDiv button{
@@ -58,4 +63,17 @@ margin: 20px 0;
     border: none;
     border-radius: 27px;
     height: 42px;
+    margin: 30px 0;
 }
+
+.inputDiv p{
+  align-self: center;
+  margin: 0;
+  padding: 0;
+}
+
+.link{
+  color: #58b747;
+  font-size: 20px;
+}
+
