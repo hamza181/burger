@@ -12,7 +12,6 @@ class App extends Component {
   render() {
     return (
       <div>
-      
         <Router>
           <Switch>
             <Route exact path="/">
@@ -26,7 +25,7 @@ class App extends Component {
               </Layout>
             </Route>
             <Route exact path="/auth">
-            <Auth></Auth>
+              <Auth></Auth>
             </Route>
           </Switch>
         </Router>
